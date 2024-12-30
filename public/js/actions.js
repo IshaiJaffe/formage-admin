@@ -6,7 +6,7 @@ function actionClicked($button, ids) {
     if (!action_id)
         return;
 
-    if (!ids.length)
+    if (!ids.length && !$button.is('[data-global="true"]'))
         return;
 
     const fireAction = (data)  => {

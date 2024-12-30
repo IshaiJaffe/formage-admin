@@ -35,7 +35,7 @@ block body
             - if (allow_delete && deleteable)
                 button#deleteButton.btn.btn-large.btn-danger(type='button',data-loading-text='Deleting...',data-confirm='true') #{__('Delete')}
             - each action in actions
-                - if (action.value != 'delete')
+                - if (action.value != 'delete' && !action.global)
                     button.action.btn.btn-large(value='#{action.value}',data-dialogs='#{(action.dialogs || []).join("")}',data-confirm='#{action.confirm}') #{action.label}
 
             - if(preview)

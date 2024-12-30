@@ -31,10 +31,10 @@ $(function() {
 
     var $actions = $('#actions');
     var shownCount = 0;
-    $('.select-row').on('change', function() {
+    function onUpdateSelected() {
         var selectCount = $('.select-row:checked').length;
-        var shownButtons = $('#actions button' + (selectCount > 1 ? '[data-multi="true"]' : ''));
-        var newShownCount = selectCount ? shownButtons.length : 0;
+        var shownButtons = $('#actions button[data-global="true"]' + selectCount > 0 ? (',#actions button' + (selectCount > 1 ? '[data-multi="true"]' : '')) : '');
+        var newShownCount = shownButtons.length;
         if(newShownCount != shownCount){
             if(!shownCount){
                 shownButtons.show();
@@ -55,8 +55,9 @@ $(function() {
             }
         }
         shownCount = newShownCount;
-    });
-
+    }
+    $('.select-row').on('change', onUpdateSelected);
+    onUpdateSelected();
     $actions.find('button').click(function(e) {
         e.preventDefault();
         let ids = [];
@@ -108,7 +109,7 @@ $(function() {
         if (!navigator.clipboard) {
             if (location.protocol === 'http:')
                 alert("Works only on https");
-            else 
+            else
                 alert("not working on this browser");
             return;
         }
