@@ -33,7 +33,8 @@ $(function() {
     var shownCount = 0;
     function onUpdateSelected() {
         var selectCount = $('.select-row:checked').length;
-        var shownButtons = $('#actions button[data-global="true"]' + selectCount > 0 ? (',#actions button' + (selectCount > 1 ? '[data-multi="true"]' : '')) : '');
+        var shownButtons = $('#actions button[data-global="true"]' +
+            (selectCount > 0 ? (',#actions button' + (selectCount > 1 ? '[data-multi="true"]' : '')) : ''));
         var newShownCount = shownButtons.length;
         if(newShownCount != shownCount){
             if(!shownCount){
